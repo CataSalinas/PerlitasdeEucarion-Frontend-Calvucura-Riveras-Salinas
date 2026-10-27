@@ -1,0 +1,20 @@
+/* Paleta de Perlitas de Eucarión (tomada de Estilo.css original) */
+:root {
+  --bs-body-bg: #fff5f7;
+  --bs-body-color: #602437;
+  --perla-oscuro: #8a2846;
+  --perla-medio: #b9375e;
+  --perla-claro: #e05780;
+  --perla-suave: #ffcad4;
+}
+.bg-perla { background-color: var(--perla-oscuro) !important; color: #fff; }
+.bg-perla-suave { background-color: var(--perla-suave) !important; }
+.btn-perla { background-color: var(--perla-medio); border-color: var(--perla-medio); color: #fff; }
+.btn-perla:hover { background-color: var(--perla-oscuro); border-color: var(--perla-oscuro); color: #fff; }
+.btn-outline-perla { border-color: var(--perla-medio); color: var(--perla-medio); }
+.btn-outline-perla:hover { background-color: var(--perla-medio); color: #fff; }
+.card-producto { transition: box-shadow .3s ease; border-color: var(--perla-suave); }
+.card-producto:hover { box-shadow: 0 4px 8px rgba(0, 0, 0, .2); }
+.precio-antes { font-size: .9rem; color: #6c757d; }
+.precio-ahora { color: var(--perla-medio); font-size: 1.4rem; font-weight: 700; }
+.mensaje-error { color: var(--perla-medio); font-size: .875rem; }
