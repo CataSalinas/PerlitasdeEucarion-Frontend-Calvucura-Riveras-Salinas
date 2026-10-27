@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "nombre": "Collar de perlas",
+    "categoria": "Collares",
+    "descripcion": "Collar artesanal con perlas de río.",
+    "precioAntes": 12990,
+    "precioAhora": 9990,
+    "stock": 8
+  },
+  {
+    "id": 2,
+    "nombre": "Aros de plata",
+    "categoria": "Aros",
+    "descripcion": "Aros colgantes con baño de plata.",
+    "precioAntes": 8990,
+    "precioAhora": 6990,
+    "stock": 15
+  },
+  {
+    "id": 3,
+    "nombre": "Pulsera de cuentas",
+    "categoria": "Pulseras",
+    "descripcion": "Pulsera tejida con cuentas de colores.",
+    "precioAntes": 5990,
+    "precioAhora": 4490,
+    "stock": 20
+  },
+  {
+    "id": 4,
+    "nombre": "Anillo ajustable",
+    "categoria": "Anillos",
+    "descripcion": "Anillo con piedra rosa, talla ajustable.",
+    "precioAntes": 6990,
+    "precioAhora": 5490,
+    "stock": 12
+  },
+  {
+    "id": 5,
+    "nombre": "Gargantilla rosa",
+    "categoria": "Collares",
+    "descripcion": "Gargantilla con dije de cuarzo rosa.",
+    "precioAntes": 9990,
+    "precioAhora": 7990,
+    "stock": 6
+  },
+  {
+    "id": 6,
+    "nombre": "Set de aros mini",
+    "categoria": "Aros",
+    "descripcion": "Set de tres pares de aros pequeños.",
+    "precioAntes": 7990,
+    "precioAhora": 5990,
+    "stock": 10
+  }
+]
