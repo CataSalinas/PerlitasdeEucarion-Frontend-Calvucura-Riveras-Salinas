@@ -1,4 +1,3 @@
-// Configuración de Karma + Jasmine (con webpack/babel para JSX y cobertura con Istanbul)
 module.exports = function (config) {
   config.set({
     basePath: '',

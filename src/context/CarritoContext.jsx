@@ -19,7 +19,7 @@ export function CarritoProvider({ children }) {
     } catch { /* sin almacenamiento disponible */ }
   }, [items])
 
-  // Devuelve un mensaje de error si no se puede agregar, o null si se agregó
+  
   function agregar(producto) {
     const existente = items.find((i) => i.id === producto.id)
     if (existente && existente.cantidad >= producto.stock) {

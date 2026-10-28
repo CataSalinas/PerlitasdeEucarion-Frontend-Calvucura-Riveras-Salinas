@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useCarrito } from '../context/CarritoContext.jsx'
 import { formatearPrecio } from '../utils/validaciones.js'
 
-// Props: producto. Estado: mensaje de error al agregar.
 export default function ProductCard({ producto }) {
   const { agregar } = useCarrito()
   const [error, setError] = useState(null)
