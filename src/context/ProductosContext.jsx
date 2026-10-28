@@ -34,10 +34,8 @@ export function ProductosProvider({ children, url }) {
   const [eliminados, setEliminados] = useState(leerEliminados)
   const [cargando, setCargando] = useState(true)
   const [error, setError] = useState(null)
-
   useEffect(() => {
     let activo = true
-
     cargarProductos(url)
       .then((datos) => {
         if (activo) setBase(datos)
@@ -48,7 +46,6 @@ export function ProductosProvider({ children, url }) {
       .finally(() => {
         if (activo) setCargando(false)
       })
-
     return () => {
       activo = false
     }
@@ -78,7 +75,6 @@ export function ProductosProvider({ children, url }) {
     const todos = [...base, ...extras]
     const id = todos.reduce((max, p) => Math.max(max, p.id), 0) + 1
     const precioNum = parseInt(precio, 10)
-
     setExtras([
       ...extras,
       {
@@ -92,7 +88,6 @@ export function ProductosProvider({ children, url }) {
       }
     ])
   }
-
   function buscarProducto(id) {
     return productos.find(
       (producto) => producto.id === parseInt(id, 10)
@@ -101,11 +96,8 @@ export function ProductosProvider({ children, url }) {
 
   function editarProducto(id, datos) {
     const producto = buscarProducto(id)
-
     if (!producto) return
-
     const precioNum = parseInt(datos.precio, 10)
-
     setEditados({
       ...editados,
       [producto.id]: {
@@ -120,16 +112,13 @@ export function ProductosProvider({ children, url }) {
 
   function eliminarProducto(id) {
     const idNum = parseInt(id, 10)
-
     const esExtra = extras.some(
       (producto) => producto.id === idNum
     )
-
     if (esExtra) {
       setExtras(
         extras.filter((producto) => producto.id !== idNum)
       )
-
       const nuevosEditados = { ...editados }
       delete nuevosEditados[idNum]
       setEditados(nuevosEditados)
@@ -140,6 +129,20 @@ export function ProductosProvider({ children, url }) {
     }
   }
 
+  function descontarStock(items) {
+  const nuevosEditados = { ...editados }
+  items.forEach((item) => {
+    const producto = buscarProducto(item.id)
+    if (producto) {
+      nuevosEditados[producto.id] = {
+        ...nuevosEditados[producto.id],
+        stock: Math.max(0, producto.stock - item.cantidad)
+      }
+    }
+  })
+
+  setEditados(nuevosEditados)
+}
   return (
     <ProductosContext.Provider
       value={{
@@ -149,8 +152,9 @@ export function ProductosProvider({ children, url }) {
         agregarProducto,
         buscarProducto,
         editarProducto,
-        eliminarProducto
-      }}
+        eliminarProducto,
+        descontarStock
+}}
     >
       {children}
     </ProductosContext.Provider>

@@ -3,9 +3,11 @@ import { useNavigate, Link } from 'react-router-dom'
 import { useCarrito } from '../context/CarritoContext.jsx'
 import { formatearPrecio } from '../utils/validaciones.js'
 import { regiones, comunas } from '../data/zonas.js'
+import { useProductos } from '../context/ProductosContext.jsx'
 
 export default function Checkout() {
   const { items, total, vaciar } = useCarrito()
+  const { descontarStock } = useProductos()
   const navigate = useNavigate()
 
   const [datos, setDatos] = useState({
@@ -28,13 +30,14 @@ export default function Checkout() {
   }
 
   function pagar(e) {
-    e.preventDefault()
-    console.log('Datos cliente:', datos)
-    console.log('Productos:', items)
-    console.log('Total:', total)
-    vaciar()
-    navigate('/compra-exitosa')
-  }
+  e.preventDefault()
+  console.log('Datos cliente:', datos)
+  console.log('Productos:', items)
+  console.log('Total:', total)
+  descontarStock(items)
+  vaciar()
+  navigate('/compra-exitosa')
+}
   if (items.length === 0) {
     return (
       <div className="text-center py-5">
