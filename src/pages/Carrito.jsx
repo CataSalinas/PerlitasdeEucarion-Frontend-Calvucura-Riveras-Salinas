@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 export default function Carrito() {
   const { items, cambiarCantidad, quitar, vaciar, total } = useCarrito()
-
   if (items.length === 0) {
     return (
       <div className="text-center py-5">
@@ -13,7 +12,6 @@ export default function Carrito() {
       </div>
     )
   }
-
   return (
     <>
       <h1 className="h3 mb-3">Carrito</h1>
@@ -44,9 +42,12 @@ export default function Carrito() {
         </table>
       </div>
       <div className="d-flex justify-content-between align-items-center">
-        <button className="btn btn-outline-perla" onClick={vaciar}>Vaciar carrito</button>
-        <h2 className="h4 mb-0">Total: {formatearPrecio(total)}</h2>
-      </div>
+  <button className="btn btn-outline-perla" onClick={vaciar}>Vaciar carrito</button>
+  <div className="d-flex align-items-center gap-3">
+    <h2 className="h4 mb-0">Total: {formatearPrecio(total)}</h2>
+    <Link className="btn btn-perla" to="/checkout">Continuar compra</Link>
+  </div>
+</div>
     </>
-  )
+  ) 
 }
