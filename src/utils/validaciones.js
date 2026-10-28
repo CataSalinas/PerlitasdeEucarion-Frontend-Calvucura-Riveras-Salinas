@@ -1,4 +1,3 @@
-// Funciones puras (se pueden probar con Jasmine). Basadas en validar_texto / validar_cantidad del proyecto original.
 export function validarTexto(texto) {
   return typeof texto === 'string' && texto.trim().length > 0
 }

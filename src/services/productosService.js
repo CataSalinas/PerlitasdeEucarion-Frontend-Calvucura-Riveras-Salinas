@@ -1,4 +1,3 @@
-// Servicio que carga el catálogo desde un archivo JSON (public/productos.json)
 export async function cargarProductos(url = '/productos.json') {
   const respuesta = await fetch(url)
   if (!respuesta.ok) {
