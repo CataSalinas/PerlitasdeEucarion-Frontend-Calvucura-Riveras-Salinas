@@ -33,9 +33,6 @@ export default function Checkout() {
 
   function pagar(e) {
   e.preventDefault()
-  console.log('Datos cliente:', datos)
-  console.log('Productos:', items)
-  console.log('Total:', total)
   const compraCorrecta = descontarStock(items)
 
   if (!compraCorrecta) {

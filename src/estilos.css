@@ -14,8 +14,6 @@
 .btn-outline-perla:hover { background-color: var(--perla-medio); color: #fff; }
 .card-producto { transition: box-shadow .3s ease; border-color: var(--perla-suave); }
 .card-producto:hover { box-shadow: 0 4px 8px rgba(0, 0, 0, .2); }
-.precio-antes { font-size: .9rem; color: #6c757d; }
-.precio-ahora { color: var(--perla-medio); font-size: 1.4rem; font-weight: 700; }
 .mensaje-error { color: var(--perla-medio); font-size: .875rem; }
 
 .oferta-franja {
