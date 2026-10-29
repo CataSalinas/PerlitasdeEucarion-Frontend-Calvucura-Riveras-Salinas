@@ -34,10 +34,17 @@ export default function Checkout() {
   console.log('Datos cliente:', datos)
   console.log('Productos:', items)
   console.log('Total:', total)
-  descontarStock(items)
-  vaciar()
-  navigate('/compra-exitosa')
+  const compraCorrecta = descontarStock(items)
+
+  if (!compraCorrecta) {
+  navigate('/compra-error')
+  return
 }
+
+vaciar()
+navigate('/compra-exitosa')
+}
+
   if (items.length === 0) {
     return (
       <div className="text-center py-5">

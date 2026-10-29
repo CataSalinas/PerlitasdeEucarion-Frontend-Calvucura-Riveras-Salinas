@@ -130,35 +130,41 @@ export function ProductosProvider({ children, url }) {
   }
 
   function descontarStock(items) {
+  const stockInsuficiente = items.some((item) => {
+    const producto = buscarProducto(item.id)
+    return !producto || item.cantidad > producto.stock
+  })
+
+  if (stockInsuficiente) return false
   const nuevosEditados = { ...editados }
   items.forEach((item) => {
     const producto = buscarProducto(item.id)
-    if (producto) {
-      nuevosEditados[producto.id] = {
-        ...nuevosEditados[producto.id],
-        stock: Math.max(0, producto.stock - item.cantidad)
-      }
+    nuevosEditados[producto.id] = {
+      ...nuevosEditados[producto.id],
+      stock: producto.stock - item.cantidad
     }
   })
 
   setEditados(nuevosEditados)
+  return true
 }
-  return (
-    <ProductosContext.Provider
-      value={{
-        productos,
-        cargando,
-        error,
-        agregarProducto,
-        buscarProducto,
-        editarProducto,
-        eliminarProducto,
-        descontarStock
-}}
-    >
-      {children}
-    </ProductosContext.Provider>
-  )
+
+return (
+  <ProductosContext.Provider
+    value={{
+      productos,
+      cargando,
+      error,
+      agregarProducto,
+      buscarProducto,
+      editarProducto,
+      eliminarProducto,
+      descontarStock
+    }}
+  >
+    {children}
+  </ProductosContext.Provider>
+)
 }
 
 export function useProductos() {

@@ -11,6 +11,7 @@ import EditarProducto from './pages/EditarProducto.jsx'
 import Checkout from './pages/Checkout.jsx'
 import CompraExitosa from './pages/CompraExitosa.jsx'
 import Categorias from './pages/Categorias.jsx'
+import CompraError from './pages/CompraError.jsx'
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/compra-exitosa" element={<CompraExitosa />} />
           <Route path="/categorias" element={<Categorias />} />
+          <Route path="/compra-error" element={<CompraError />} />
         </Routes>
       </main>
       <Footer />
