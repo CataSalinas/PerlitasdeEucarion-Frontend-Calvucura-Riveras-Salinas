@@ -59,7 +59,7 @@ describe('CarritoContext (lógica del carrito)', () => {
 
   it('cambiarCantidad no supera el stock disponible', () => {
     const { result } = montar()
-    act(() => { result.current.agregar(PRODUCTOS_FALSOS[0]) }) // stock 2
+    act(() => { result.current.agregar(PRODUCTOS_FALSOS[0]) }) 
     act(() => { result.current.cambiarCantidad(1, 5) })
     expect(result.current.items[0].cantidad).toBe(2)
   })

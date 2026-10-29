@@ -1,4 +1,5 @@
 import { render, screen, fireEvent, cleanup } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 import ProductCard from '../src/components/ProductCard.jsx'
 import { CarritoProvider } from '../src/context/CarritoContext.jsx'
 import { PRODUCTOS_FALSOS } from './helpers.jsx'
@@ -7,7 +8,14 @@ describe('ProductCard (props, estado y DOM)', () => {
   beforeEach(() => localStorage.clear())
   afterEach(() => cleanup())
 
-  const dibujar = () => render(<CarritoProvider><ProductCard producto={PRODUCTOS_FALSOS[0]} /></CarritoProvider>)
+  const dibujar = (producto = PRODUCTOS_FALSOS[0]) =>
+    render(
+      <MemoryRouter>
+        <CarritoProvider>
+          <ProductCard producto={producto} />
+        </CarritoProvider>
+      </MemoryRouter>
+    )
 
   it('muestra nombre, categoría y stock recibidos por props', () => {
     dibujar()
@@ -38,7 +46,7 @@ describe('ProductCard (props, estado y DOM)', () => {
 
   it('no muestra la franja de descuento si el producto no está en oferta', () => {
     const sinOferta = { ...PRODUCTOS_FALSOS[0], precioAntes: 9990, precioAhora: 9990 }
-    render(<CarritoProvider><ProductCard producto={sinOferta} /></CarritoProvider>)
+    dibujar(sinOferta)
     expect(screen.queryByText(/% OFF/)).toBeNull()
   })
 })

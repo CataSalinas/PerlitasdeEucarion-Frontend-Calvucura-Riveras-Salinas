@@ -2,8 +2,7 @@ import { renderHook, act, waitFor, cleanup } from '@testing-library/react'
 import { ProductosProvider, useProductos } from '../src/context/ProductosContext.jsx'
 import { PRODUCTOS_FALSOS, mockCatalogo } from './helpers.jsx'
 
-// Jasmine no lanza excepción al fallar un expect, así que waitFor necesita
-// una función que sí lance error mientras la carga no termine.
+
 function esperarCarga(result) {
   return waitFor(() => {
     if (result.current.cargando) throw new Error('todavía cargando')
@@ -14,7 +13,7 @@ describe('ProductosContext (CRUD sobre el catálogo)', () => {
   beforeEach(() => localStorage.clear())
   afterEach(() => cleanup())
 
-  // Monta el provider y espera a que termine de cargar el JSON mockeado
+
   async function montar() {
     mockCatalogo()
     const vista = renderHook(() => useProductos(), { wrapper: ProductosProvider })

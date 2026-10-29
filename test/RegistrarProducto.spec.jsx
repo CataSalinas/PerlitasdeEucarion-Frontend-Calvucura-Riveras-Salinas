@@ -20,7 +20,7 @@ describe('Formulario RegistrarProducto (validación y navegación de estado)', (
     mockCatalogo()
     render(<Envoltorio><RegistrarProducto /></Envoltorio>)
     fireEvent.change(screen.getByLabelText('Nombre'), { target: { name: 'nombre', value: 'Anillo luna' } })
-    fireEvent.change(screen.getByLabelText('Categoría'), { target: { name: 'categoria', value: 'Anillos' } })
+    fireEvent.change(screen.getByLabelText('Categoria'), { target: { name: 'categoria', value: 'Anillos' } })
     fireEvent.change(screen.getByLabelText('Precio'), { target: { name: 'precio', value: '4500' } })
     fireEvent.change(screen.getByLabelText('Stock'), { target: { name: 'stock', value: '3' } })
     fireEvent.click(screen.getByRole('button', { name: 'Registrar' }))

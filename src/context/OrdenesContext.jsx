@@ -24,7 +24,7 @@ export function OrdenesProvider({ children }) {
       cliente: datosCliente,
       productos,
       total,
-      estado: 'Pagada'
+      estado: 'Pagado'
     }
     setOrdenes([...ordenes, nuevaOrden])
   }

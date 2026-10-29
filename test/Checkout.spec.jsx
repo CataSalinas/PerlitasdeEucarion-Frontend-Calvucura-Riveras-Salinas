@@ -22,7 +22,7 @@ describe('Página Checkout (formulario, stock y navegación)', () => {
   async function dibujar() {
     mockCatalogo()
     render(<Envoltorio ruta="/checkout">{rutas}</Envoltorio>)
-    // deja que termine la carga (asíncrona) del catálogo mockeado
+    
     await act(async () => { await new Promise((r) => setTimeout(r, 0)) })
   }
 
@@ -78,7 +78,7 @@ describe('Página Checkout (formulario, stock y navegación)', () => {
   })
 
   it('si no hay stock suficiente va a compra con error y conserva el carrito', async () => {
-    cargarCarrito(5) // el stock del producto de prueba es 2
+    cargarCarrito(5) 
     await dibujar()
     llenarFormulario()
     pagar()

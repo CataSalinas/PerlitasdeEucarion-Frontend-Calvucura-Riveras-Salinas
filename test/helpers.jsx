@@ -1,6 +1,7 @@
 import { MemoryRouter } from 'react-router-dom'
 import { ProductosProvider } from '../src/context/ProductosContext.jsx'
 import { CarritoProvider } from '../src/context/CarritoContext.jsx'
+import { OrdenesProvider } from '../src/context/OrdenesContext.jsx'
 
 export const PRODUCTOS_FALSOS = [
   { id: 1, nombre: 'Collar de perlas', categoria: 'Collares', descripcion: 'd1', precioAntes: 12990, precioAhora: 9990, stock: 2 },
@@ -17,7 +18,9 @@ export function Envoltorio({ children, ruta = '/' }) {
   return (
     <MemoryRouter initialEntries={[ruta]}>
       <ProductosProvider>
-        <CarritoProvider>{children}</CarritoProvider>
+        <CarritoProvider>
+          <OrdenesProvider>{children}</OrdenesProvider>
+        </CarritoProvider>
       </ProductosProvider>
     </MemoryRouter>
   )
