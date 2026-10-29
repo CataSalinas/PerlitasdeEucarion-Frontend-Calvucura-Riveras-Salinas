@@ -16,6 +16,7 @@ export default function Navbar() {
           <ul className="navbar-nav me-auto">
             <li className="nav-item"><NavLink className="nav-link" to="/" end>Inicio</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link" to="/productos">Productos</NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link" to="/categorias">Categorias</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link" to="/registrar">Registrar producto</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link" to="/admin/productos">Administrar productos</NavLink></li>
           </ul>

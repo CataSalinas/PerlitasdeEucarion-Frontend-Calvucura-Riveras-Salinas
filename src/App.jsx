@@ -10,6 +10,7 @@ import DetalleProducto from './pages/DetalleProducto.jsx'
 import EditarProducto from './pages/EditarProducto.jsx'
 import Checkout from './pages/Checkout.jsx'
 import CompraExitosa from './pages/CompraExitosa.jsx'
+import Categorias from './pages/Categorias.jsx'
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/admin/productos/:id/editar" element={<EditarProducto />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/compra-exitosa" element={<CompraExitosa />} />
+          <Route path="/categorias" element={<Categorias />} />
         </Routes>
       </main>
       <Footer />
