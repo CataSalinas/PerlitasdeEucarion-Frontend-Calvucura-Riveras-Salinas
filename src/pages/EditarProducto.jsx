@@ -24,8 +24,10 @@ export default function EditarProducto() {
       ? {
           nombre: producto.nombre,
           categoria: producto.categoria,
-          precio: String(producto.precioAhora),
-          stock: String(producto.stock)
+          precio: String(producto.precioAntes),
+          descuento: producto.precioAntes > producto.precioAhora
+          ? String(Math.round((1 - producto.precioAhora / producto.precioAntes) * 100)): '',
+stock: String(producto.stock)
         }
       : {
           nombre: '',
@@ -63,6 +65,13 @@ export default function EditarProducto() {
     if (!validarCantidad(datos.precio)) {
       nuevos.precio = 'El precio debe ser mayor a 0'
     }
+    if (datos.descuento !== '') {
+      const descuento = parseInt(datos.descuento, 10)
+
+      if (isNaN(descuento) || descuento < 0 || descuento > 100) {
+        nuevos.descuento = 'El descuento debe estar entre 0 y 100'
+      }
+}
 
     if (!validarCantidad(datos.stock)) {
       nuevos.stock = 'El stock debe ser mayor a 0'
@@ -113,6 +122,7 @@ export default function EditarProducto() {
           {campo('nombre', 'Nombre')}
           {campo('categoria', 'Categoria')}
           {campo('precio', 'Precio', 'number')}
+          {campo('descuento', 'Descuento % (opcional)', 'number')}
           {campo('stock', 'Stock', 'number')}
           <div className="d-flex gap-2">
             <Link

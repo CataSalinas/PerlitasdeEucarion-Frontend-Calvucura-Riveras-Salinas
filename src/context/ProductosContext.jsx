@@ -95,20 +95,25 @@ export function ProductosProvider({ children, url }) {
   }
 
   function editarProducto(id, datos) {
-    const producto = buscarProducto(id)
-    if (!producto) return
-    const precioNum = parseInt(datos.precio, 10)
-    setEditados({
-      ...editados,
-      [producto.id]: {
-        nombre: datos.nombre.trim(),
-        categoria: datos.categoria.trim(),
-        precioAntes: precioNum,
-        precioAhora: precioNum,
-        stock: parseInt(datos.stock, 10)
-      }
-    })
-  }
+  const producto = buscarProducto(id)
+  if (!producto) return
+
+  const precioNum = parseInt(datos.precio, 10)
+  const descuento = datos.descuento === '' ? 0 : parseInt(datos.descuento, 10)
+  const precioFinal = Math.round(precioNum - (precioNum * descuento / 100))
+
+  setEditados({
+    ...editados,
+    [producto.id]: {
+      nombre: datos.nombre.trim(),
+      categoria: datos.categoria.trim(),
+      precioAntes: precioNum,
+      precioAhora: precioFinal,
+      descuento,
+      stock: parseInt(datos.stock, 10)
+    }
+  })
+}
 
   function eliminarProducto(id) {
     const idNum = parseInt(id, 10)

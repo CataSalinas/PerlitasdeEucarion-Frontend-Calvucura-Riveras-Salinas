@@ -17,3 +17,18 @@
 .precio-antes { font-size: .9rem; color: #6c757d; }
 .precio-ahora { color: var(--perla-medio); font-size: 1.4rem; font-weight: 700; }
 .mensaje-error { color: var(--perla-medio); font-size: .875rem; }
+
+.oferta-franja {
+  position: absolute;
+  top: 18px;
+  right: -42px;
+  width: 150px;
+  padding: 5px 0;
+  background-color: #c2325b;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 13px;
+  transform: rotate(45deg);
+  z-index: 2;
+}

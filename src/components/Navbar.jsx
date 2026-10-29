@@ -19,6 +19,7 @@ export default function Navbar() {
             <li className="nav-item"><NavLink className="nav-link" to="/categorias">Categorias</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link" to="/registrar">Registrar producto</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link" to="/admin/productos">Administrar productos</NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link" to="/ofertas">Ofertas</NavLink></li>
           </ul>
           <Link className="btn btn-perla" to="/carrito">
             <i className="bi bi-cart4"></i> Carrito ({cantidadTotal}) <strong>{formatearPrecio(total)}</strong>
