@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useCarrito } from '../context/CarritoContext.jsx'
 import { formatearPrecio } from '../utils/validaciones.js'
+import { Link } from 'react-router-dom'
 
 export default function ProductCard({ producto }) {
   const { agregar } = useCarrito()
@@ -28,12 +29,13 @@ export default function ProductCard({ producto }) {
             {enOferta && <p className="text-decoration-line-through text-muted mb-0">{formatearPrecio(producto.precioAntes)}</p>}
             <h3 className="precio mb-0">{formatearPrecio(producto.precioAhora)}</h3>
           </div>
-
+          
           <small className="text-muted d-block mb-2">Stock disponible: {producto.stock}</small>
-
-          <div className="d-grid">
-            <button className="btn btn-perla" onClick={manejarAgregar}>Añadir</button>
-          </div>
+          
+          <div className="d-flex gap-2">
+            <Link className="btn btn-outline-secondary w-50" to={`/productos/${producto.id}`}>Ver detalle</Link>
+            <button className="btn btn-perla w-50" onClick={manejarAgregar}>Añadir</button>
+            </div>
 
           {error && <div className="mensaje-error mt-2" role="alert">{error}</div>}
         </div>

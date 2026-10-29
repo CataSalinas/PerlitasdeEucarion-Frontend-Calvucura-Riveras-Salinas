@@ -4,10 +4,12 @@ import { useCarrito } from '../context/CarritoContext.jsx'
 import { formatearPrecio } from '../utils/validaciones.js'
 import { regiones, comunas } from '../data/zonas.js'
 import { useProductos } from '../context/ProductosContext.jsx'
+import { useOrdenes } from '../context/OrdenesContext.jsx'
 
 export default function Checkout() {
   const { items, total, vaciar } = useCarrito()
   const { descontarStock } = useProductos()
+  const { agregarOrden } = useOrdenes()
   const navigate = useNavigate()
 
   const [datos, setDatos] = useState({
@@ -41,9 +43,11 @@ export default function Checkout() {
   return
 }
 
-vaciar()
-navigate('/compra-exitosa')
+agregarOrden(datos, items, total)
+  vaciar()
+  navigate('/compra-exitosa')
 }
+
 
   if (items.length === 0) {
     return (

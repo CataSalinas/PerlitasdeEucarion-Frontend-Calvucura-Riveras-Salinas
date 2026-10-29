@@ -8,15 +8,16 @@ import './estilos.css'
 import App from './App.jsx'
 import { CarritoProvider } from './context/CarritoContext.jsx'
 import { ProductosProvider } from './context/ProductosContext.jsx'
+import { OrdenesProvider } from './context/OrdenesContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <ProductosProvider>
-        <CarritoProvider>
+  <BrowserRouter>
+    <ProductosProvider url="/productos.json">
+      <CarritoProvider>
+        <OrdenesProvider>
           <App />
-        </CarritoProvider>
-      </ProductosProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+        </OrdenesProvider>
+      </CarritoProvider>
+    </ProductosProvider>
+  </BrowserRouter>
 )

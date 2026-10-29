@@ -13,6 +13,9 @@ import CompraExitosa from './pages/CompraExitosa.jsx'
 import Categorias from './pages/Categorias.jsx'
 import CompraError from './pages/CompraError.jsx'
 import Ofertas from './pages/Ofertas.jsx'
+import AdministrarOrdenes from './pages/AdministrarOrdenes.jsx'
+import DetalleOrden from './pages/DetalleOrden.jsx'
+import ProductoDetalle from './pages/ProductoDetalle.jsx'
 
 export default function App() {
   return (
@@ -32,6 +35,9 @@ export default function App() {
           <Route path="/categorias" element={<Categorias />} />
           <Route path="/compra-error" element={<CompraError />} />
           <Route path="/ofertas" element={<Ofertas />} />
+          <Route path="/admin/ordenes" element={<AdministrarOrdenes />} />
+          <Route path="/admin/ordenes/:id" element={<DetalleOrden />} />
+          <Route path="/productos/:id" element={<ProductoDetalle />} />
         </Routes>
       </main>
       <Footer />
