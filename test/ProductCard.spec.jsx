@@ -30,4 +30,15 @@ describe('ProductCard (props, estado y DOM)', () => {
     fireEvent.click(boton)
     expect(screen.getByRole('alert').textContent).toContain('No puedes añadir más de 2')
   })
+
+  it('muestra la franja de descuento cuando el producto está en oferta', () => {
+    dibujar()
+    expect(screen.getByText('23% OFF')).toBeTruthy()
+  })
+
+  it('no muestra la franja de descuento si el producto no está en oferta', () => {
+    const sinOferta = { ...PRODUCTOS_FALSOS[0], precioAntes: 9990, precioAhora: 9990 }
+    render(<CarritoProvider><ProductCard producto={sinOferta} /></CarritoProvider>)
+    expect(screen.queryByText(/% OFF/)).toBeNull()
+  })
 })
