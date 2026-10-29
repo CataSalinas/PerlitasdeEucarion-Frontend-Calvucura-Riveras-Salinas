@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { validarTexto, validarCantidad } from '../utils/validaciones.js'
 import { useProductos } from '../context/ProductosContext.jsx'
+import { categorias } from '../data/categorias.js'
 
 const VACIO = { nombre: '', categoria: '', precio: '', stock: '' }
 
@@ -39,6 +40,18 @@ export default function RegistrarProducto() {
     </div>
   )
 
+  const campoCategoria = () => (
+  <div className="mb-3">
+    <label htmlFor="categoria" className="form-label">Categoría</label>
+    <select id="categoria" name="categoria" value={datos.categoria} onChange={manejarCambio}
+      className={'form-select' + (errores.categoria ? ' is-invalid' : '')}>
+      <option value="">Seleccione una categoría</option>
+      {categorias.map((categoria) => <option key={categoria} value={categoria}>{categoria}</option>)}
+    </select>
+    {errores.categoria && <div className="mensaje-error">{errores.categoria}</div>}
+  </div>
+)
+
   return (
     <div className="row justify-content-center">
       <div className="col-12 col-md-8 col-lg-6">
@@ -46,7 +59,7 @@ export default function RegistrarProducto() {
         {enviado && <div className="alert alert-success" role="status">Producto registrado correctamente.</div>}
         <form onSubmit={manejarEnvio} noValidate>
           {campo('nombre', 'Nombre')}
-          {campo('categoria', 'Categoría')}
+          {campoCategoria()}
           {campo('precio', 'Precio', 'number')}
           {campo('stock', 'Stock', 'number')}
           <button type="submit" className="btn btn-perla">Registrar</button>
